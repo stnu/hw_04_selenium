@@ -1,6 +1,9 @@
 import pytest
+from selenium import webdriver
+
+DRIVERS_STORAGE = "/Users/Anna/Desktop/Drivers/chromedriver.exe"
 
 
 @pytest.fixture()
 def driver():
-    pass
+    return webdriver.Chrome(executable_path=f"{DRIVERS_STORAGE}/chromedriver")
