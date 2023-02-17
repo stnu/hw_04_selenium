@@ -2,29 +2,38 @@ import pytest
 import os
 from selenium import webdriver
 
+from selenium.webdriver.chrome.service import Service as ChromiumService
+from selenium.webdriver.firefox.service import Service as FFService
+
 
 def pytest_addoption(parser):
-    parser.addoption(
-        "--browser", default="chrome", help="Browser to run tests"
-    )
-    parser.addoption(
-        "--driver_storage", default=os.path.expanduser("~/Users/Anna/Desktop/Drivers"),
-        help="Browser to run tests"
-    )
+    parser.addoption("--browser", default="chrome", help="Browser to run tests")
+    parser.addoption("--url", default="http://192.168.56.1:8081/")
+    parser.addoption("--drivers", default=os.path.expanduser("~/Users/Anna/Desktop/Drivers"),
+                     help="Browser to run tests")
 
 
 @pytest.fixture()
-def driver(request):
-    browser_name = request.config.getoption("--browser")
-    driver_storage = request.config.getoption("--driver_storage")
+def browser(request):
+    browser = request.config.getoption("--browser")
+    url = request.config.getoption("--url")
+    drivers = request.config.getoption("--drivers")
 
-    _driver = None
+    if browser == "chrome":
 
-    if browser_name == "chrom":
-        _driver = webdriver.Chrome(executable_path=f"{driver_storage}/chromedriver")
-    elif browser_name == "firefox" or browser_name == "ff":
-        _driver = webdriver.Firefox(executable_path=f"{driver_storage}/geckodriver")
+        service = ChromiumService(executable_path=drivers + "/chromedriver")
+        driver = webdriver.Chrome(service=service)
+    elif browser == "firefox":
+        service = FFService(executable_path=drivers + "/geckodriver")
+        driver = webdriver.Firefox(service=service)
+    else:
+        raise ValueError("Browser not supported!")
 
-    yield _driver
+    driver.maximize_window()
 
-    _driver.close()
+    request.addfinalizer(driver.close)
+
+    driver.get(url)
+    driver.url = url
+
+    return driver
