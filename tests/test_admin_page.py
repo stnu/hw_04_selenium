@@ -33,14 +33,12 @@ def test_password_field(browser):
 
 def test_login_btn(browser):
     browser.get(browser.url + "/admin")
-    login_btn = WebDriverWait(browser, 3).until(EC.visibility_of_element_located(
-        (AdminPage.LOGIN_BTN)))
+    login_btn = WebDriverWait(browser, 3).until(EC.visibility_of_element_located((AdminPage.LOGIN_BTN)))
     assert login_btn.text == "Login"
     assert login_btn.is_enabled()
 
 
 def test_forgotten_pswrd(browser):
     browser.get(browser.url + "/admin")
-    forgotten_pswrd = WebDriverWait(browser, 3).until(EC.visibility_of_element_located(
-        (AdminPage.FORGOTTEN_PASSWORD)))
+    forgotten_pswrd = WebDriverWait(browser, 3).until(EC.visibility_of_element_located((AdminPage.FORGOTTEN_PASSWORD)))
     assert forgotten_pswrd.text == "Forgotten Password"

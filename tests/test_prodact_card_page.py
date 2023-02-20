@@ -20,8 +20,7 @@ def test_product_title(browser):
 
 def test_product_title_model(browser):
     browser.get(browser.url + "index.php?route=product/product&path=18&product_id=44")
-    product_title = WebDriverWait(browser, 2).until(EC.visibility_of_element_located(
-        (AdminPage.CART_MODEL)))
+    product_title = WebDriverWait(browser, 2).until(EC.visibility_of_element_located((AdminPage.CART_MODEL)))
     assert product_title.text == "MacBook Air"
 
 
@@ -33,13 +32,11 @@ def test_product_button(browser):
 
 def test_product_price(browser):
     browser.get(browser.url + "index.php?route=product/product&path=18&product_id=44")
-    product_price = WebDriverWait(browser, 2).until(EC.visibility_of_element_located(
-        (AdminPage.CART_PRICE)))
+    product_price = WebDriverWait(browser, 2).until(EC.visibility_of_element_located((AdminPage.CART_PRICE)))
     assert product_price.text == "$1,202.00"
 
 
 def test_product_description(browser):
     browser.get(browser.url + "index.php?route=product/product&path=18&product_id=44")
-    product_description = WebDriverWait(browser, 2).until(EC.visibility_of_element_located(
-        (AdminPage.CART_DES)))
+    product_description = WebDriverWait(browser, 2).until(EC.visibility_of_element_located((AdminPage.CART_DES)))
     assert "MacBook Air" in product_description.text
