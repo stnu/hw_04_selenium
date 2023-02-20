@@ -22,7 +22,7 @@ def browser(request):
     if browser == "chrome":
         service = ChromiumService(executable_path=drivers + "/chromedriver")
         driver = webdriver.Chrome(service=service)
-    elif browser == "firefox":
+    elif browser == "firefox" or "ff":
         service = FFService(executable_path=drivers + "/geckodriver")
         driver = webdriver.Firefox(service=service)
     else:
