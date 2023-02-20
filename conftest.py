@@ -20,7 +20,6 @@ def browser(request):
     drivers = request.config.getoption("--drivers")
 
     if browser == "chrome":
-
         service = ChromiumService(executable_path=drivers + "/chromedriver")
         driver = webdriver.Chrome(service=service)
     elif browser == "firefox":
