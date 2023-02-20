@@ -41,7 +41,7 @@ def test_main_categories_menu(browser):
     assert "Tablets" in menu.text
 
 
-def test_footer_page(browser):
+def test_footer(browser):
     browser.get(browser.url)
     header_links = WebDriverWait(browser, 2).until(EC.visibility_of_element_located((AdminPage.MAIN_FOOTER)))
     elements = header_links.find_elements(*AdminPage.MAIN_FOOTER_B)

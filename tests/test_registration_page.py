@@ -11,7 +11,7 @@ def test_find_element_registration_page(browser):
     browser.find_element(*AdminPage.ACCOUNT_LINKS)
 
 
-def test_registration_page(browser):
+def test_registration_title(browser):
     browser.get(browser.url + "index.php?route=account/register")
     assert "Register Account" in browser.title
 

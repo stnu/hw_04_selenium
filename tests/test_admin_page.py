@@ -4,11 +4,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 from page_object.base_page import AdminPage
 
 
-def test_page_title(browser):
-    browser.get(browser.url + "/admin")
-    assert "Administration" in browser.title
-
-
 def test_find_element_login_page(browser):
     browser.get(browser.url + "/admin")
     browser.find_element(*AdminPage.USERNAME_INPUT)
@@ -17,6 +12,11 @@ def test_find_element_login_page(browser):
     browser.find_element(*AdminPage.FORGOTTEN_PASSWORD)
     browser.find_element(*AdminPage.OPENCART_LINK)
     time.sleep(2)
+
+
+def test_admin_title(browser):
+    browser.get(browser.url + "/admin")
+    assert "Administration" in browser.title
 
 
 def test_username_field(browser):

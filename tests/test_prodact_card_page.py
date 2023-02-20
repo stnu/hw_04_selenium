@@ -4,7 +4,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from page_object.base_page import AdminPage
 
 
-def test_find_element_login_page(browser):
+def test_find_element_cart_page(browser):
     browser.get(browser.url + "index.php?route=product/product&path=18&product_id=44")
     browser.find_element(*AdminPage.CART_BNT)
     browser.find_element(*AdminPage.CART_PRICE)
@@ -14,6 +14,11 @@ def test_find_element_login_page(browser):
 
 
 def test_product_title(browser):
+    browser.get(browser.url + "index.php?route=product/product&path=18&product_id=44")
+    assert "MacBook Air" in browser.title
+
+
+def test_product_title_model(browser):
     browser.get(browser.url + "index.php?route=product/product&path=18&product_id=44")
     product_title = WebDriverWait(browser, 2).until(EC.visibility_of_element_located(
         (AdminPage.CART_MODEL)))
