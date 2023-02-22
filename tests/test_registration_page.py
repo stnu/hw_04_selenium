@@ -18,19 +18,19 @@ def test_registration_title(browser):
 
 def test_continue_btn(browser):
     browser.get(browser.url + "index.php?route=account/register")
-    continue_btn = WebDriverWait(browser, 2).until(EC.visibility_of_element_located((AdminPage.CONTINUE_BTN)))
+    continue_btn = WebDriverWait(browser, 2).until(EC.visibility_of_element_located(AdminPage.CONTINUE_BTN))
     assert continue_btn.is_enabled()
 
 
 def test_account_links(browser):
     browser.get(browser.url + "index.php?route=account/register")
-    account_links = WebDriverWait(browser, 2).until(EC.visibility_of_element_located((AdminPage.ACCOUNT_LINKS)))
+    account_links = WebDriverWait(browser, 2).until(EC.visibility_of_element_located(AdminPage.ACCOUNT_LINKS))
     assert ("Register" in account_links.text) and ("My Account" in account_links.text)
 
 
 def test_password_fieldset(browser):
     browser.get(browser.url + "index.php?route=account/register")
-    password_fieldset = WebDriverWait(browser, 2).until(EC.visibility_of_element_located((AdminPage.A2)))
+    password_fieldset = WebDriverWait(browser, 2).until(EC.visibility_of_element_located(AdminPage.A2))
     password_fields = password_fieldset.find_elements(*AdminPage.A1)
     for i in password_fields:
         assert i.get_attribute("type") == "password"

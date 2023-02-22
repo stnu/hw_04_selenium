@@ -22,14 +22,14 @@ def test_main_title(browser):
 
 def test_main_header(browser):
     browser.get(browser.url)
-    header_links = WebDriverWait(browser, 2).until(EC.visibility_of_element_located((AdminPage.MAIN_LINKS)))
+    header_links = WebDriverWait(browser, 2).until(EC.visibility_of_element_located(AdminPage.MAIN_LINKS))
     elements = header_links.find_elements(*AdminPage.MAIN_LI)
     assert len(elements) == 7
 
 
 def test_main_search_placeholder(browser):
     browser.get(browser.url)
-    search = WebDriverWait(browser, 2).until(EC.visibility_of_element_located((AdminPage.MAIN_SEARCH)))
+    search = WebDriverWait(browser, 2).until(EC.visibility_of_element_located(AdminPage.MAIN_SEARCH))
     assert search.get_attribute("placeholder") == "Search"
 
 
@@ -43,6 +43,6 @@ def test_main_categories_menu(browser):
 
 def test_footer(browser):
     browser.get(browser.url)
-    header_links = WebDriverWait(browser, 2).until(EC.visibility_of_element_located((AdminPage.MAIN_FOOTER)))
+    header_links = WebDriverWait(browser, 2).until(EC.visibility_of_element_located(AdminPage.MAIN_FOOTER))
     elements = header_links.find_elements(*AdminPage.MAIN_FOOTER_B)
     assert len(elements) == 4

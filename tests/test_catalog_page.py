@@ -25,13 +25,13 @@ def test_catalog_cards(browser):
 
 def test_add_cart(browser):
     browser.get(browser.url + "index.php?route=product/category&path=18")
-    add_to_cart_btn = WebDriverWait(browser, 2).until(EC.visibility_of_element_located((AdminPage.ADD_CART)))
+    add_to_cart_btn = WebDriverWait(browser, 2).until(EC.visibility_of_element_located(AdminPage.ADD_CART))
     assert add_to_cart_btn.find_element(*AdminPage.TAG_NAME).text == "ADD TO CART"
 
 
 def test_category_name(browser):
     browser.get(browser.url + "index.php?route=product/category&path=18")
-    name_ctgr = WebDriverWait(browser, 2).until(EC.visibility_of_element_located((AdminPage.NAME_CTGR)))
+    name_ctgr = WebDriverWait(browser, 2).until(EC.visibility_of_element_located(AdminPage.NAME_CTGR))
     assert name_ctgr.text == "Laptops & Notebooks"
 
 
