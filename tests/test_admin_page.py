@@ -1,7 +1,7 @@
 import time
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from page_object.base_page import AdminPage
+from page_object.admin_page import AdminPage
 
 
 def test_find_element_login_page(browser):
